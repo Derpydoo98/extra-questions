@@ -6,7 +6,7 @@ int yeardays (int year);
 int monthdays (int year , int month);
 
 
-
+//主函数：用于完成提示，输入和输出
 int main()
 {
     printf("This programme is designed for outputing the calendar for one year.\n");
@@ -25,6 +25,7 @@ int main()
     return 0;
 }
 
+//一年的日历，将每个月进行循环，并用换行分割月与月
 void calendar (int year)
 {
     for(int i = 1;i <= 12;i++)
@@ -36,21 +37,24 @@ void calendar (int year)
 
 }
 
+/*每个月的情况，先计算这一个月的第一天距离1900年1月1日有多少天；
+从而得到这天是星期几，然后循环输出本月剩下的天数*/
 inline void eachmonth (int year , int month)
 {
     long daysofar = 0;
     for (int i = 1900;i <= year - 1;i++)
     {
-        daysofar += yeardays(i);
+        daysofar += yeardays(i);     //之前所有年的天加载一块
     }
     for (int i = 1;i <= month - 1;i++)
     {
-        daysofar += monthdays(year , i);
+        daysofar += monthdays(year , i);   //之前所有月的天加载一块
     }
     int weekday1st = daysofar % 7 + 1;
-    printf("     %d年%d月\n",year,month);
-    printf("日 一 二 三 四 五 六\n");
-//7-1-0,1-2-3,2-3-6,6-7-18
+    printf("     %d年%d月\n",year,month); //输出每个标题
+    printf("日 一 二 三 四 五 六\n");//输出“是星期几”的表头
+
+//7-1位-0空格,1-2位-3空格,2-3位-6个空格,6-7位-18个空格
     if(weekday1st == 7) weekday1st = 0;
     for (int i = 1;i <= weekday1st * 3;i++)
     {
