@@ -7,33 +7,29 @@ int main()
     long n;
     int system;
     scanf("%ld%d",&n,&system);
-    if(n == 1) printf("0001");
-    else if(n==0) printf("0000");
-    else{
-        long t=1;
-        int i=0;
-        while(t<=n)
-        {
-            t*=system;
-            i++;
-        }
-        t/=system;
-        long sum = 0;
-    for (int k=i;k>=1;k--)
+
+
+    
+    int i=0,t,sum=0;
+    while (1)
     {
-       sum+=n/t * ten(k-1);
-       n%=t;
-       t/=system;
+        t = n%system;
+        sum+=t*ten(i);
+        i++;
+        n/=system;
+        if(n==0) break;
     }
+    
     if(i<4)
     {
-        for(int t=1;t<=4-i;t++)
+        for(int i=1;i<=4-i;i++)
         {
             printf("0");
         }
     }
     printf("%ld",sum);
-}
+
+    
     return 0;
 }
 
