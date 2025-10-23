@@ -18,21 +18,26 @@ int main()
             i++;
         }
         t/=system;
-        long sum = 0;
-    for (int k=i;k>=1;k--)
-    {
-       sum+=n/t * ten(k-1);
-       n%=t;
-       t/=system;
-    }
-    if(i<4)
+      
+        if(i<4)
     {
         for(int t=1;t<=4-i;t++)
         {
             printf("0");
         }
     }
-    printf("%ld",sum);
+    for (int k=i;k>=1;k--)
+    {
+
+       
+       int front = n / t;
+       if(front>=10) printf("%c",'A'+front-10);
+       else printf("%d",front);
+       n%=t;
+       t/=system;
+    }
+    
+   
 }
     return 0;
 }
