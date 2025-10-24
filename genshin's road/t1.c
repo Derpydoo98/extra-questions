@@ -22,7 +22,8 @@ int main()
     
     if(i<4)
     {
-        for(int i=1;i<=4-i;i++)
+        int k = i;
+        for(int i=1;i<=4-k;i++)
         {
             printf("0");
         }
